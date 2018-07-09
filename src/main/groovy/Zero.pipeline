@@ -1,0 +1,15 @@
+def execute() {
+  node {
+    stage('First') {
+      echo 'First'
+    }
+    stage('Second') {
+      echo 'Second'
+    }
+    stage('Third') {
+      echo 'Third'
+    }
+  }
+}
+
+return this
