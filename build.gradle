@@ -1,4 +1,11 @@
+import org.apache.tools.ant.filters.ConcatFilter
+
 apply plugin: 'groovy'
+
+def orgSourceDir="${projectDir}/src/main/groovy"
+def tmpSourceDir="${projectDir}/src/main/tmpgroovy"
+def resSourceDir="${projectDir}/src/main/resources"
+
 
 repositories {
   mavenCentral()
@@ -16,4 +23,17 @@ sourceSets {
             srcDirs= ['src/test/groovy']
         }
     }
+}
+
+test.doFirst {
+  mkdir "${tmpSourceDir}"
+  copy {
+    from "${orgSourceDir}"
+    into "${tmpSourceDir}"
+    filter(ConcatFilter, prepend : file("${resSourceDir}/firstline"), append : file("${resSourceDir}/lastline"))
+  }
+}
+
+test.doLast {
+  delete "${tmpSourceDir}"
 }

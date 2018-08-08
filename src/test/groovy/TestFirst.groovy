@@ -26,7 +26,7 @@ class TestFirst extends BasePipelineTest {
  
   @Test
   void should_execute_without_errors() throws Exception {
-    def script = loadScript("src/main/groovy/First.pipeline")
+    def script = loadScript("src/main/tmpgroovy/First.pipeline")
     script.execute()
     printCallStack()
   }

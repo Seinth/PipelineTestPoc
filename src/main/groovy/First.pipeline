@@ -1,29 +1,26 @@
-def execute() {
-  @Library('Dummy') _
-  node {
-    stage('SimpleStep') {
-      helloWorld 'Alfred'
-    }
-    stage('MoreComplexStep') {
-      parseInputMap name: 'Seinth', project: 'PipelineTestPoc'
-    }
-    stage('FunctionOutsideClass') {
-      def palindrome = new org.dummy.Palindrome()
-      words=["kajak","pierogi","karkowka","anna"]
-      words.each {
-        echo "Is \"$it\" a palindrome? ${palindrome.isPalindrome(it)}"
-      }
-    }
-    stage('ClassOperations') {
-      lotofnumbers=[[20,3],[30,29],[1000,1],[1,1000]]
-      lotofnumbers.each {
-        org.dummy.AddSubtract numbers = new org.dummy.AddSubtract(it)
-        echo "Is ${numbers.a} and ${numbers.b} sum bigger than 10? ${numbers.isSumBiggerThan10()}"
-        echo "Is ${numbers.a} and ${numbers.b} sum bigger than 100? ${numbers.isSumBiggerThan100()}"
-        echo "Is ${numbers.a} and ${numbers.b} sub bigger than 10? ${numbers.isSubBiggerThan10()}"
-        echo "Is ${numbers.a} and ${numbers.b} sub bigger than 100? ${numbers.isSubBiggerThan100()}"
-        }
+@Library('Dummy') _
+node {
+  stage('SimpleStep') {
+    helloWorld 'Alfred'
+  }
+  stage('MoreComplexStep') {
+    parseInputMap name: 'Seinth', project: 'PipelineTestPoc'
+  }
+  stage('FunctionOutsideClass') {
+    def palindrome = new org.dummy.Palindrome()
+    words=["kajak","pierogi","karkowka","anna"]
+    words.each {
+      echo "Is \"$it\" a palindrome? ${palindrome.isPalindrome(it)}"
     }
   }
+  stage('ClassOperations') {
+    lotofnumbers=[[20,3],[30,29],[1000,1],[1,1000]]
+    lotofnumbers.each {
+      org.dummy.AddSubtract numbers = new org.dummy.AddSubtract(it)
+      echo "Is ${numbers.a} and ${numbers.b} sum bigger than 10? ${numbers.isSumBiggerThan10()}"
+      echo "Is ${numbers.a} and ${numbers.b} sum bigger than 100? ${numbers.isSumBiggerThan100()}"
+      echo "Is ${numbers.a} and ${numbers.b} sub bigger than 10? ${numbers.isSubBiggerThan10()}"
+      echo "Is ${numbers.a} and ${numbers.b} sub bigger than 100? ${numbers.isSubBiggerThan100()}"
+      }
+  }
 }
-return this
