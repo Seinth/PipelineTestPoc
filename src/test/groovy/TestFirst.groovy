@@ -1,7 +1,8 @@
 import static com.lesfurets.jenkins.unit.global.lib.LibraryConfiguration.library
 
 import com.lesfurets.jenkins.unit.BasePipelineTest
-import com.lesfurets.jenkins.unit.global.lib.GitSource
+//import com.lesfurets.jenkins.unit.global.lib.GitSource
+import com.lesfurets.jenkins.unit.global.lib.LocalSource
 
 import org.junit.*
 
@@ -15,7 +16,8 @@ class TestFirst extends BasePipelineTest {
 
     def library = library()
                     .name('Dummy')
-                    .retriever(GitSource.gitSource('https://github.com/Seinth/PipelineSharedLibraryPoc.git'))
+//                    .retriever(GitSource.gitSource('https://github.com/Seinth/PipelineSharedLibraryPoc.git'))
+                    .retriever(LocalSource.localSource('./PipelineSharedLibraryPoc'))
                     .targetPath(clonePath)
                     .defaultVersion("master")
                     .allowOverride(true)
