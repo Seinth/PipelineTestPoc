@@ -10,7 +10,7 @@ class TestZero extends BasePipelineTest {
  
   @Test
   void should_execute_without_errors() throws Exception {
-    def script = loadScript("src/main/tmpgroovy/Zero.pipeline")
+    def script = loadScript(System.getProperty("tmpSourceDir")+"/Zero.pipeline")
     script.execute()
     printCallStack()
   }

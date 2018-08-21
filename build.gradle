@@ -18,11 +18,15 @@ dependencies {
 }
 
 sourceSets {
-    test {
-        groovy {
-            srcDirs= ['src/test/groovy']
-        }
-    }
+  test {
+    groovy {
+      srcDirs=['src/test/groovy']
+      }
+  }
+}
+
+test {
+  systemProperty 'tmpSourceDir', "${tmpSourceDir}"
 }
 
 test.doFirst {
