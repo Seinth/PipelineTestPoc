@@ -8,7 +8,10 @@ def resSourceDir="${projectDir}/src/main/resources"
 
 
 repositories {
-  mavenCentral()
+//  mavenCentral()
+  maven {
+    url "file://${projectDir}/m2repo"
+  }
 }
 
 dependencies {
